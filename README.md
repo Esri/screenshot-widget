@@ -84,6 +84,7 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 ```
 const screenshot = new Screenshot({
   view: this.view,
-  mapComponentSelectors: [".esri-legend__layer", ".esri-popup__main-container"]
+  legendIncludedInScreenshot: true,
+  popupIncludedInScreenshot: false
 });
 ```
