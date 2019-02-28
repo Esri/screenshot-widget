@@ -130,25 +130,25 @@ class ScreenshotPanel extends declared(Widget) {
   @property()
   mapComponentSelectors: string[] = [];
 
-  // legendScreenshotEnabled
-  @aliasOf("viewModel.legendScreenshotEnabled")
+  // includeLegendInScreenshot
+  @aliasOf("viewModel.includeLegendInScreenshot")
   @property()
-  legendScreenshotEnabled: boolean = null;
+  includeLegendInScreenshot: boolean = null;
 
-  // popupScreenshotEnabled
-  @aliasOf("viewModel.popupScreenshotEnabled")
+  // includePopupInScreenshot
+  @aliasOf("viewModel.includePopupInScreenshot")
   @property()
-  popupScreenshotEnabled: boolean = null;
+  includePopupInScreenshot: boolean = null;
 
-  // legendIncludedInScreenshot
-  @aliasOf("viewModel.legendIncludedInScreenshot")
+  // enableLegendOption
+  @aliasOf("viewModel.enableLegendOption")
   @property()
-  legendIncludedInScreenshot: boolean = null;
+  enableLegendOption: boolean = null;
 
-  // popupIncludedInScreenshot
-  @aliasOf("viewModel.popupIncludedInScreenshot")
+  // enablePopupOption
+  @aliasOf("viewModel.enablePopupOption")
   @property()
-  popupIncludedInScreenshot: boolean = null;
+  enablePopupOption: boolean = null;
 
   @aliasOf("viewModel.featureWidget")
   @property()
@@ -170,10 +170,10 @@ class ScreenshotPanel extends declared(Widget) {
   @property()
   @renderable([
     "viewModel.state",
-    "viewModel.legendScreenshotEnabled",
-    "viewModel.popupScreenshotEnabled",
-    "viewModel.legendIncludedInScreenshot",
-    "viewModel.popupIncludedInScreenshot",
+    "viewModel.includeLegendInScreenshot",
+    "viewModel.includePopupInScreenshot",
+    "viewModel.enableLegendOption",
+    "viewModel.enablePopupOption",
     "viewModel.featureWidget",
     "viewModel.expandWidget",
     "viewModel.legendWidget",
@@ -192,8 +192,7 @@ class ScreenshotPanel extends declared(Widget) {
       this._watchPopups(),
       this._togglePopupAlert(),
       this._generateOffScreenPopup(),
-      this._resetOffScreenPopup(),
-      this._watchOffScreenPopup()
+      this._resetOffScreenPopup()
     ]);
   }
 
@@ -281,12 +280,10 @@ class ScreenshotPanel extends declared(Widget) {
         {this._selectFeatureAlertIsVisible ? featureAlert : null}
         <div class={CSS.mainContainer}>
           <h1 class={CSS.panelTitle}>{screenshotTitle}</h1>
-          {this.legendIncludedInScreenshot || this.popupIncludedInScreenshot ? (
+          {this.enableLegendOption || this.enablePopupOption ? (
             <h3 class={CSS.panelSubTitle}>{screenshotSubtitle}</h3>
           ) : null}
-          {this.legendIncludedInScreenshot || this.popupIncludedInScreenshot
-            ? fieldSet
-            : null}
+          {this.enableLegendOption || this.enablePopupOption ? fieldSet : null}
           {setMapAreaButton}
         </div>
       </div>
@@ -332,27 +329,27 @@ class ScreenshotPanel extends declared(Widget) {
           CSS.screenshotfieldSetCheckbox
         )}
       >
-        {this.legendIncludedInScreenshot ? (
+        {this.enableLegendOption ? (
           <label class={CSS.screenshotOption}>
             {" "}
             <input
               bind={this}
               onclick={this._toggleLegend}
               onkeydown={this._toggleLegend}
-              checked={this.legendScreenshotEnabled}
+              checked={this.includeLegendInScreenshot}
               type="checkbox"
             />
             {legend}
           </label>
         ) : null}
-        {this.popupIncludedInScreenshot ? (
+        {this.enablePopupOption ? (
           <label class={CSS.screenshotOption}>
             <input
               bind={this}
               onclick={this._togglePopup}
               onkeydown={this._togglePopup}
               type="checkbox"
-              checked={this.popupScreenshotEnabled}
+              checked={this.includePopupInScreenshot}
             />
             {popup}
           </label>
@@ -375,7 +372,7 @@ class ScreenshotPanel extends declared(Widget) {
           afterCreate={storeNode}
           data-node-ref="_activeScreenshotBtnNode"
           disabled={
-            this.popupIncludedInScreenshot && this.popupScreenshotEnabled
+            this.enablePopupOption && this.includePopupInScreenshot
               ? this.featureWidget && this.featureWidget.graphic
                 ? false
                 : true
@@ -525,7 +522,7 @@ class ScreenshotPanel extends declared(Widget) {
   @accessibleHandler()
   private _toggleLegend(event: Event): void {
     const node = event.currentTarget as HTMLInputElement;
-    this.legendScreenshotEnabled = node.checked;
+    this.includeLegendInScreenshot = node.checked;
     this.scheduleRender();
   }
 
@@ -533,7 +530,7 @@ class ScreenshotPanel extends declared(Widget) {
   @accessibleHandler()
   private _togglePopup(event: Event): void {
     const node = event.currentTarget as HTMLInputElement;
-    this.popupScreenshotEnabled = node.checked;
+    this.includePopupInScreenshot = node.checked;
     this.scheduleRender();
   }
 
@@ -574,17 +571,30 @@ class ScreenshotPanel extends declared(Widget) {
 
   // _togglePopupAlert
   private _togglePopupAlert(): __esri.WatchHandle {
-    return watchUtils.watch(this, "popupScreenshotEnabled", () => {
-      if (this.popupScreenshotEnabled && this.popupIncludedInScreenshot) {
-        if (!this.featureWidget) {
-          this._selectFeatureAlertIsVisible = true;
-        } else {
-          this._selectFeatureAlertIsVisible = false;
-        }
-      } else {
-        this._selectFeatureAlertIsVisible = false;
+    return watchUtils.init(this, "enablePopupOption", () => {
+      if (this.enablePopupOption) {
+        this.own([
+          watchUtils.watch(this, "includePopupInScreenshot", () => {
+            if (this.includePopupInScreenshot) {
+              if (!this.featureWidget) {
+                this._selectFeatureAlertIsVisible = true;
+              }
+              this.own([
+                watchUtils.watch(this, "featureWidget", () => {
+                  if (this.featureWidget) {
+                    this._selectFeatureAlertIsVisible = false;
+                  } else {
+                    this._selectFeatureAlertIsVisible = true;
+                  }
+                })
+              ]);
+            } else {
+              this._selectFeatureAlertIsVisible = false;
+            }
+            this.scheduleRender();
+          })
+        ]);
       }
-      this.scheduleRender();
     });
   }
 
@@ -602,17 +612,6 @@ class ScreenshotPanel extends declared(Widget) {
           });
           this._selectFeatureAlertIsVisible = false;
         }
-      }
-    });
-  }
-
-  // _watchOffScreenPopup
-  private _watchOffScreenPopup(): __esri.WatchHandle {
-    return watchUtils.watch(this, "featureWidget", () => {
-      if (!this.featureWidget) {
-        this._selectFeatureAlertIsVisible = true;
-      } else {
-        this._selectFeatureAlertIsVisible = false;
       }
     });
   }
