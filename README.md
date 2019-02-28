@@ -31,7 +31,7 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | expandWidget \*\*               | Expand               | Instance of the Expand widget.                                              |
 | screenshotPanel \*\*            | ScreenshotPanel      | View for screenshot widget panel.                                           |
 
-\*\* = //aliased
+\*\* = aliased
 
 ## ScreenshotPanel
 
@@ -55,7 +55,7 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | featureWidget \*\*              | Feature              | Instance of the Feature widget.                                                           |
 | legendWidget \*\*               | Legend               | Instance of the Legend widget.                                                            |
 
-\*\* = //aliased
+\*\* = aliased
 
 ## ScreenshotViewModel
 
@@ -83,7 +83,7 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | featureWidget              | Feature              | Instance of the Feature widget.                                                           |
 | legendWidget               | Legend               | Instance of the Legend widget.                                                            |
 
-\*\* = //aliased
+\*\* = aliased
 
 ### **Example usage:**
 
