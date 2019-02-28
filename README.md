@@ -4,6 +4,8 @@ Screenshot widget built with the ArcGIS API for Javascript version 4.x and html2
 
 More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 
+![Interactive Legend Preview](images/screenshot-widget.png)
+
 ## Screenshot
 
 ### Constructor:
