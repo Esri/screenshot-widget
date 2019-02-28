@@ -4,12 +4,6 @@ Screenshot widget built with the ArcGIS API for Javascript version 4.x and html2
 
 More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 
-## Features:
-
-1.  `MapView` and `SceneView` compatability
-2.  Take a screenshot of the `MapView` or `SceneView`
-3.  Include screenshots of map components i.e. Legend or Popup
-
 ## Screenshot
 
 ### Constructor:
@@ -94,6 +88,24 @@ const screenshot = new Screenshot({
   popupIncludedInScreenshot: false
 });
 ```
+
+## Features:
+
+1.  `MapView` and `SceneView` compatability
+2.  Take a screenshot of the `MapView` or `SceneView`
+3.  Include screenshots of map components i.e. Legend or Popup
+
+## Instructions
+
+1. Fork and then clone the repo. 
+2. Include widget in your sample app.
+3. Compile typescript and scss files.
+4. Run on local web server.
+
+## Requirements
+
+* Notepad or your favorite HTML editor
+* Web browser with access to the Internet
 
 ## Resources
 
