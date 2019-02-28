@@ -17,14 +17,15 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | Name                            | Type                 | Summary                                                                     |
 | ------------------------------- | -------------------- | --------------------------------------------------------------------------- |
 | view \*                       | MapView \| SceneView | A reference to the `MapView` or `SceneView`                                 |
+| viewModel                       | ScreenshotViewModel | View model for this widget.                                 |
 | label                           | String               | The widget's default label.                                                 |
 | iconClass                       | String               | Expand widget icon class.                                                   |
-| includeLegendInScreenshot \* | boolean              | Boolean to include option for user to include/exclude legend in screenshot. |
-| includePopupInScreenshot \*  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot. |
-| enableLegendOption \*    | boolean              | Boolean to include/exclude legend in screenshot.                            |
-| enablePopupOption \*     | boolean              | Boolean to include/exclude pop-up in screenshot.                            |
+|  enableLegendOption \* | boolean              | Boolean to include option for user to include/exclude legend in screenshot. |
+|  enablePopupOption \*  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot. |
+| includeLegendInScreenshot \*    | boolean              | Boolean to include/exclude legend in screenshot.                            |
+| includePopupInScreenshot \*     | boolean              | Boolean to include/exclude pop-up in screenshot.                            |
 | featureWidget \* `read-only`     | Feature              | Feature Widget containing pop-up node to include in screenshot.                            |
-| LegendWidget \* `read-only`      | Legend              | Legend Widget containing map legend node to include in screenshot.                            |
+| legendWidget \* `read-only`      | Legend              | Legend Widget containing map legend node to include in screenshot.                            |
 
 \* = aliased
 
@@ -42,10 +43,10 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | previewIsVisible           | boolean              | Boolean which indicates if the image preview panel is visible.                            |
 | screenshotModeIsActive     | boolean              | Boolean which indicates if the widget is in screenshot mode.                              |
 | dragHandler                | any                  | Drag handler event.                                                                       |
-| includeLegendInScreenshot | boolean              | Boolean to include option for user to include/exclude legend in screenshot.               |
-| includePopupInScreenshot  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot.               |
-| enableLegendOption    | boolean              | Boolean to include/exclude legend in screenshot.                                          |
-| enablePopupOption     | boolean              | Boolean to include/exclude pop-up in screenshot.                                          |
+| enableLegendOption | boolean              | Boolean to include option for user to include/exclude legend in screenshot.               |
+| enablePopupOption  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot.               |
+|  includeLegendInScreenshot    | boolean              | Boolean to include/exclude legend in screenshot.                                          |
+|  includePopupInScreenshot     | boolean              | Boolean to include/exclude pop-up in screenshot.                                          |
 | featureWidget `read-only`              | Feature              | Instance of the Feature widget.                                                           |
 | legendWidget `read-only`               | Legend               | Instance of the Legend widget.                                                            |
 
@@ -56,8 +57,10 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 ```
 const screenshot = new Screenshot({
   view: this.view,
-  legendIncludedInScreenshot: true,
-  popupIncludedInScreenshot: false
+  enableLegendOption: true,
+  enablePopupOption: true,
+  includeLegendInScreenshot: true,
+  includePopupInScreenshot: false
 });
 ```
 
