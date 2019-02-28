@@ -52,8 +52,6 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | featureWidget `read-only`              | Feature              | Instance of the Feature widget.                                                           |
 | legendWidget `read-only`               | Legend               | Instance of the Legend widget.                                                            |
 
-\* = aliased
-
 ### **Example usage:**
 
 ```
@@ -76,11 +74,10 @@ watchUtils.whenFalse(expandWidget, "expanded", () => {
     }
   });
 ```
-
 Please see which CSS properties are supported in HTML2Canvas here:
 http://html2canvas.hertzen.com/features
 
-Please include Promise polyfill to run in IE11.
+Due to HTML2Canvas limitations in IE11, please include a Promise polyfill.
 
 ## Features:
 
