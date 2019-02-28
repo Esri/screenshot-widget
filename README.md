@@ -18,18 +18,20 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 
 ##### Property Overview:
 
-| Name                                 | Type                 | Summary                                                                     |
-| ------------------------------------ | -------------------- | --------------------------------------------------------------------------- |
-| view //aliased                       | MapView \| SceneView | A reference to the `MapView` or `SceneView`                                 |
-| label                                | String               | The widget's default label.                                                 |
-| iconClass                            | String               | Expand widget icon class.                                                   |
-| legendIncludedInScreenshot //aliased | boolean              | Boolean to include option for user to include/exclude legend in screenshot. |
-| popupIncludedInScreenshot //aliased  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot. |
-| legendScreenshotEnabled //aliased    | boolean              | Boolean to include/exclude legend in screenshot.                            |
-| popupScreenshotEnabled //aliased     | boolean              | Boolean to include/exclude pop-up in screenshot.                            |
-| expandWidgetEnabled //aliased        | boolean              | Boolean to opt into expand widget.                                          |
-| expandWidget //aliased               | Expand               | Instance of the Expand widget.                                              |
-| screenshotPanel //aliased            | ScreenshotPanel      | View for screenshot widget panel.                                           |
+| Name                            | Type                 | Summary                                                                     |
+| ------------------------------- | -------------------- | --------------------------------------------------------------------------- |
+| view \*\*                       | MapView \| SceneView | A reference to the `MapView` or `SceneView`                                 |
+| label                           | String               | The widget's default label.                                                 |
+| iconClass                       | String               | Expand widget icon class.                                                   |
+| legendIncludedInScreenshot \*\* | boolean              | Boolean to include option for user to include/exclude legend in screenshot. |
+| popupIncludedInScreenshot \*\*  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot. |
+| legendScreenshotEnabled \*\*    | boolean              | Boolean to include/exclude legend in screenshot.                            |
+| popupScreenshotEnabled \*\*     | boolean              | Boolean to include/exclude pop-up in screenshot.                            |
+| expandWidgetEnabled \*\*        | boolean              | Boolean to opt into expand widget.                                          |
+| expandWidget \*\*               | Expand               | Instance of the Expand widget.                                              |
+| screenshotPanel \*\*            | ScreenshotPanel      | View for screenshot widget panel.                                           |
+
+\*\* = //aliased
 
 ## ScreenshotPanel
 
@@ -39,19 +41,21 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 
 ##### Property Overview:
 
-| Name                                 | Type                 | Summary                                                                                   |
-| ------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------- |
-| view //aliased                       | MapView \| SceneView | A reference to the `MapView` or `SceneView`                                               |
-| viewModel                            | ScreenshotViewModel  | The view model for this widget.                                                           |
-| mapComponentSelectors //aliased      | String[] //aliased   | Array of strings consisting of HTML class name selectors. Length of array can be up to 2. |
-| legendIncludedInScreenshot //aliased | boolean              | Boolean to include option for user to include/exclude legend in screenshot.               |
-| popupIncludedInScreenshot //aliased  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot.               |
-| legendScreenshotEnabled //aliased    | boolean              | Boolean to include/exclude legend in screenshot.                                          |
-| popupScreenshotEnabled //aliased     | boolean              | Boolean to include/exclude pop-up in screenshot.                                          |
-| expandWidgetEnabled //aliased        | boolean              | Boolean to opt into expand widget.                                                        |
-| expandWidget //aliased               | Expand               | Instance of the Expand widget.                                                            |
-| featureWidget //aliased              | Feature              | Instance of the Feature widget.                                                           |
-| legendWidget //aliased               | Legend               | Instance of the Legend widget.                                                            |
+| Name                            | Type                 | Summary                                                                                   |
+| ------------------------------- | -------------------- | ----------------------------------------------------------------------------------------- |
+| view \*\*                       | MapView \| SceneView | A reference to the `MapView` or `SceneView`                                               |
+| viewModel                       | ScreenshotViewModel  | The view model for this widget.                                                           |
+| mapComponentSelectors \*\*      | String[] \*\*        | Array of strings consisting of HTML class name selectors. Length of array can be up to 2. |
+| legendIncludedInScreenshot \*\* | boolean              | Boolean to include option for user to include/exclude legend in screenshot.               |
+| popupIncludedInScreenshot \*\*  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot.               |
+| legendScreenshotEnabled \*\*    | boolean              | Boolean to include/exclude legend in screenshot.                                          |
+| popupScreenshotEnabled \*\*     | boolean              | Boolean to include/exclude pop-up in screenshot.                                          |
+| expandWidgetEnabled \*\*        | boolean              | Boolean to opt into expand widget.                                                        |
+| expandWidget \*\*               | Expand               | Instance of the Expand widget.                                                            |
+| featureWidget \*\*              | Feature              | Instance of the Feature widget.                                                           |
+| legendWidget \*\*               | Legend               | Instance of the Legend widget.                                                            |
+
+\*\* = //aliased
 
 ## ScreenshotViewModel
 
@@ -78,6 +82,8 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | expandWidget               | Expand               | Instance of the Expand widget.                                                            |
 | featureWidget              | Feature              | Instance of the Feature widget.                                                           |
 | legendWidget               | Legend               | Instance of the Legend widget.                                                            |
+
+\*\* = //aliased
 
 ### **Example usage:**
 
