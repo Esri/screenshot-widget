@@ -74,10 +74,10 @@ watchUtils.whenFalse(expandWidget, "expanded", () => {
     }
   });
 ```
-Please see which CSS properties are supported in HTML2Canvas here:
+Please see which CSS properties are supported in html2Canvas here:
 http://html2canvas.hertzen.com/features
 
-Due to HTML2Canvas limitations in IE11, please include a Promise polyfill.
+Due to html2Canvas limitations in IE11, please include a Promise polyfill.
 
 ## Features:
 
