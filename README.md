@@ -65,8 +65,9 @@ const screenshot = new Screenshot({
   includePopupInScreenshot: false
 });
 ```
+A few things to note:
 
-If Expand widget used, please use similar logic in app to watch expanded property:
+If Expand widget is used, please use similar logic in app to watch expanded property:
 
 ```
 watchUtils.whenFalse(expandWidget, "expanded", () => {
@@ -75,6 +76,11 @@ watchUtils.whenFalse(expandWidget, "expanded", () => {
     }
   });
 ```
+
+Please see which CSS properties are supported in HTML2Canvas here:
+http://html2canvas.hertzen.com/features
+
+Please include Promise polyfill to run in IE11.
 
 ## Features:
 
