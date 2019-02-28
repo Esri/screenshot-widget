@@ -52,25 +52,25 @@ class Screenshot extends declared(Widget) {
   @property()
   view: MapView | SceneView = null;
 
-  // legendIncludedInScreenshot
-  @aliasOf("screenshotPanel.legendIncludedInScreenshot")
+  // enableLegendOption
+  @aliasOf("screenshotPanel.enableLegendOption")
   @property()
-  legendIncludedInScreenshot: boolean = null;
+  enableLegendOption: boolean = null;
 
-  // popupIncludedInScreenshot
-  @aliasOf("screenshotPanel.popupIncludedInScreenshot")
+  // enablePopupOption
+  @aliasOf("screenshotPanel.enablePopupOption")
   @property()
-  popupIncludedInScreenshot: boolean = null;
+  enablePopupOption: boolean = null;
 
-  // legendScreenshotEnabled
-  @aliasOf("screenshotPanel.legendScreenshotEnabled")
+  // includeLegendInScreenshot
+  @aliasOf("screenshotPanel.includeLegendInScreenshot")
   @property()
-  legendScreenshotEnabled: boolean = null;
+  includeLegendInScreenshot: boolean = null;
 
-  // popupScreenshotEnabled
-  @aliasOf("screenshotPanel.popupScreenshotEnabled")
+  // includePopupInScreenshot
+  @aliasOf("screenshotPanel.includePopupInScreenshot")
   @property()
-  popupScreenshotEnabled: boolean = null;
+  includePopupInScreenshot: boolean = null;
 
   // expandWidgetEnabled
   @aliasOf("screenshotPanel.expandWidgetEnabled")
@@ -116,18 +116,18 @@ class Screenshot extends declared(Widget) {
       this,
       [
         "view",
-        "legendIncludedInScreenshot",
-        "popupIncludedInScreenshot",
+        "enableLegendOption",
+        "enablePopupOption",
         "expandWidgetEnabled"
       ],
       () => {
         const { screenshotPanel } = this;
         screenshotPanel.view = this.view;
-        screenshotPanel.legendIncludedInScreenshot = this.legendIncludedInScreenshot;
-        screenshotPanel.popupIncludedInScreenshot = this.popupIncludedInScreenshot;
+        screenshotPanel.enableLegendOption = this.enableLegendOption;
+        screenshotPanel.enablePopupOption = this.enablePopupOption;
         screenshotPanel.expandWidgetEnabled = this.expandWidgetEnabled;
-        screenshotPanel.legendScreenshotEnabled = this.legendScreenshotEnabled;
-        screenshotPanel.popupScreenshotEnabled = this.popupScreenshotEnabled;
+        screenshotPanel.includeLegendInScreenshot = this.includeLegendInScreenshot;
+        screenshotPanel.includePopupInScreenshot = this.includePopupInScreenshot;
       }
     );
   }

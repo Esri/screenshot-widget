@@ -110,21 +110,21 @@ class ScreenshotViewModel extends declared(Accessor) {
   @property()
   secondMapComponent: HTMLCanvasElement = null;
 
-  // legendScreenshotEnabled
+  // includeLegendInScreenshot
   @property()
-  legendScreenshotEnabled = true;
+  includeLegendInScreenshot = true;
 
-  // popupScreenshotEnabled
+  // includePopupInScreenshot
   @property()
-  popupScreenshotEnabled = false;
+  includePopupInScreenshot = false;
 
-  // legendIncludedInScreenshot
+  // enableLegendOption
   @property()
-  legendIncludedInScreenshot: boolean = null;
+  enableLegendOption: boolean = null;
 
-  // popupIncludedInScreenshot
+  // enablePopupOption
   @property()
-  popupIncludedInScreenshot: boolean = null;
+  enablePopupOption: boolean = null;
 
   // expandWidget
   @property()
@@ -157,7 +157,8 @@ class ScreenshotViewModel extends declared(Accessor) {
       this._watchPopup(),
       this._watchScreenshotMode(),
       this._watchLegendWidgetAndView(),
-      this._watchIncludedProperties()
+      this._watchIncludedProperties(),
+      this._watchSelectedFeature()
     ]);
     if (this.expandWidgetEnabled) {
       this._handles.add([
@@ -314,7 +315,7 @@ class ScreenshotViewModel extends declared(Accessor) {
       this.mapComponentSelectors[1]
     ) as HTMLElement;
 
-    const mapComponent = this.legendScreenshotEnabled
+    const mapComponent = this.includeLegendInScreenshot
       ? firstComponent
       : secondMapComponent;
 
@@ -641,7 +642,7 @@ class ScreenshotViewModel extends declared(Accessor) {
     const secondMapComponent = document.querySelector(
       this.mapComponentSelectors[1]
     ) as HTMLElement;
-    if (!this.legendScreenshotEnabled && !this.popupScreenshotEnabled) {
+    if (!this.includeLegendInScreenshot && !this.includePopupInScreenshot) {
       this._onlyTakeScreenshotOfView(
         viewScreenshot,
         viewCanvas,
@@ -651,7 +652,7 @@ class ScreenshotViewModel extends declared(Accessor) {
         downloadBtnNode
       );
     } else {
-      if (this.legendScreenshotEnabled && !this.popupScreenshotEnabled) {
+      if (this.includeLegendInScreenshot && !this.includePopupInScreenshot) {
         if (firstComponent.offsetWidth && firstComponent.offsetHeight) {
           this._includeOneMapComponent(
             viewScreenshot,
@@ -671,7 +672,10 @@ class ScreenshotViewModel extends declared(Accessor) {
             downloadBtnNode
           );
         }
-      } else if (this.popupScreenshotEnabled && !this.legendScreenshotEnabled) {
+      } else if (
+        this.includePopupInScreenshot &&
+        !this.includeLegendInScreenshot
+      ) {
         if (secondMapComponent.offsetWidth && secondMapComponent.offsetHeight) {
           this._includeOneMapComponent(
             viewScreenshot,
@@ -691,7 +695,10 @@ class ScreenshotViewModel extends declared(Accessor) {
             downloadBtnNode
           );
         }
-      } else if (this.legendScreenshotEnabled && this.popupScreenshotEnabled) {
+      } else if (
+        this.includeLegendInScreenshot &&
+        this.includePopupInScreenshot
+      ) {
         if (
           firstComponent.offsetWidth &&
           firstComponent.offsetHeight &&
@@ -783,7 +790,7 @@ class ScreenshotViewModel extends declared(Accessor) {
       if (
         !this.view.popup.visible &&
         this.screenshotModeIsActive &&
-        this.popupIncludedInScreenshot &&
+        this.enablePopupOption &&
         this.view.popup.selectedFeature
       ) {
         const layerView = this.view.layerViews.find(
@@ -841,19 +848,28 @@ class ScreenshotViewModel extends declared(Accessor) {
   private _watchIncludedProperties(): __esri.WatchHandle {
     return watchUtils.init(
       this,
-      ["legendIncludedInScreenshot", "popupIncludedInScreenshot"],
+      ["enableLegendOption", "enablePopupOption"],
       () => {
-        if (this.legendIncludedInScreenshot) {
-          this.legendScreenshotEnabled = true;
+        if (this.enableLegendOption) {
+          this.includeLegendInScreenshot = true;
         } else {
-          this.legendScreenshotEnabled = false;
+          this.includeLegendInScreenshot = false;
         }
-        if (this.popupIncludedInScreenshot) {
-          this.popupScreenshotEnabled = false;
+        if (this.enablePopupOption) {
+          this.includePopupInScreenshot = false;
         }
         this.notifyChange("state");
       }
     );
+  }
+
+  // _watchSelectedFeature
+  private _watchSelectedFeature(): __esri.WatchHandle {
+    return watchUtils.watch(this, "view.popup.selectedFeature", () => {
+      if (this.featureWidget) {
+        this.featureWidget.graphic = this.view.popup.selectedFeature;
+      }
+    });
   }
 }
 
