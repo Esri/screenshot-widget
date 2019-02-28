@@ -88,8 +88,8 @@ const CSS = {
   offScreenLegendContainer: "esri-screenshot__offscreen-legend-container"
 };
 
-@subclass("ScreenshotPanel")
-class ScreenshotPanel extends declared(Widget) {
+@subclass("Screenshot")
+class Screenshot extends declared(Widget) {
   constructor(value?: any) {
     super();
   }
@@ -639,4 +639,4 @@ class ScreenshotPanel extends declared(Widget) {
   }
 }
 
-export = ScreenshotPanel;
+export = Screenshot;
