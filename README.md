@@ -21,7 +21,7 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | iconClass                       | String               | Expand widget icon class.                                                   |
 | includeLegendInScreenshot \* | boolean              | Boolean to include option for user to include/exclude legend in screenshot. |
 | includePopupInScreenshot \*  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot. |
-| enabledLegendOption \*    | boolean              | Boolean to include/exclude legend in screenshot.                            |
+| enableLegendOption \*    | boolean              | Boolean to include/exclude legend in screenshot.                            |
 | enablePopupOption \*     | boolean              | Boolean to include/exclude pop-up in screenshot.                            |
 | featureWidget \* `read-only`     | Feature              | Feature Widget containing pop-up node to include in screenshot.                            |
 | LegendWidget \* `read-only`      | Legend              | Legend Widget containing map legend node to include in screenshot.                            |
@@ -41,18 +41,13 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | view                       | MapView \| SceneView | A reference to the `MapView` or `SceneView`                                               |
 | previewIsVisible           | boolean              | Boolean which indicates if the image preview panel is visible.                            |
 | screenshotModeIsActive     | boolean              | Boolean which indicates if the widget is in screenshot mode.                              |
-| mapComponentSelectors      | String[]             | Array of strings consisting of HTML class name selectors. Length of array can be up to 2. |
-| firstMapComponent          | HTMLCanvasElement    | Map component to be included in screenshot.                                               |
-| secondMapComponent         | HTMLCanvasElement    | Map component to be included in screenshot.                                               |
 | dragHandler                | any                  | Drag handler event.                                                                       |
-| legendIncludedInScreenshot | boolean              | Boolean to include option for user to include/exclude legend in screenshot.               |
-| popupIncludedInScreenshot  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot.               |
-| legendScreenshotEnabled    | boolean              | Boolean to include/exclude legend in screenshot.                                          |
-| popupScreenshotEnabled     | boolean              | Boolean to include/exclude pop-up in screenshot.                                          |
-| expandWidgetEnabled        | boolean              | Boolean to opt into expand widget.                                                        |
-| expandWidget               | Expand               | Instance of the Expand widget.                                                            |
-| featureWidget              | Feature              | Instance of the Feature widget.                                                           |
-| legendWidget               | Legend               | Instance of the Legend widget.                                                            |
+| includeLegendInScreenshot | boolean              | Boolean to include option for user to include/exclude legend in screenshot.               |
+| includePopupInScreenshot  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot.               |
+| enableLegendOption    | boolean              | Boolean to include/exclude legend in screenshot.                                          |
+| enablePopupOption     | boolean              | Boolean to include/exclude pop-up in screenshot.                                          |
+| featureWidget `read-only`              | Feature              | Instance of the Feature widget.                                                           |
+| legendWidget `read-only`               | Legend               | Instance of the Legend widget.                                                            |
 
 \*\* = aliased
 
