@@ -69,11 +69,11 @@ const screenshot = new Screenshot({
 If Expand widget used, please use similar logic in app to watch expanded property:
 
 ```
-          watchUtils.whenFalse(expandWidget, "expanded", () => {
-            if (screenshotWidget.screenshotModeIsActive) {
-              screenshotWidget.screenshotModeIsActive = false;
-            }
-          });
+watchUtils.whenFalse(expandWidget, "expanded", () => {
+    if (screenshotWidget.screenshotModeIsActive) {
+      screenshotWidget.screenshotModeIsActive = false;
+    }
+  });
 ```
 
 ## Features:
