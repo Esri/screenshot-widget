@@ -20,11 +20,11 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | viewModel                       | ScreenshotViewModel | View model for this widget.                                 |
 | label                           | String               | The widget's default label.                                                 |
 | iconClass                       | String               | Expand widget icon class.                                                   |
-| screenshotModeIsActive \*     | boolean              | Boolean which indicates if the widget is in screenshot mode.                              |
-|  enableLegendOption \* | boolean              | Boolean to include legend option for user to include/exclude in screenshot. |
-|  enablePopupOption \*  | boolean              | Boolean to include pop-up option for user to include/exclude in screenshot. |
-| includeLegendInScreenshot \*    | boolean              | Boolean to include/exclude legend in screenshot.                            |
-| includePopupInScreenshot \*     | boolean              | Boolean to include/exclude pop-up in screenshot.                            |
+| screenshotModeIsActive \*     | Boolean              | Boolean which indicates if the widget is in screenshot mode.                              |
+|  enableLegendOption \* | Boolean              | Boolean to include legend option for user to include/exclude in screenshot. |
+|  enablePopupOption \*  | Boolean              | Boolean to include pop-up option for user to include/exclude in screenshot. |
+| includeLegendInScreenshot \*    | Boolean              | Boolean to include/exclude legend in screenshot.                            |
+| includePopupInScreenshot \*     | Boolean              | Boolean to include/exclude pop-up in screenshot.                            |
 | featureWidget \* `read-only`     | Feature              | Feature Widget containing pop-up node to include in screenshot.                            |
 | legendWidget \* `read-only`      | Legend              | Legend Widget containing map legend node to include in screenshot.                            |
 
@@ -41,14 +41,14 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 | Name                       | Type                 | Summary                                                                                   |
 | -------------------------- | -------------------- | ----------------------------------------------------------------------------------------- |
 | view                       | MapView \| SceneView | A reference to the `MapView` or `SceneView`                                               |
-| previewIsVisible           | boolean              | Boolean which indicates if the image preview panel is visible.                            |
-| screenshotModeIsActive     | boolean              | Boolean which indicates if the widget is in screenshot mode.                              |
+| previewIsVisible           | Boolean              | Boolean which indicates if the image preview panel is visible.                            |
+| screenshotModeIsActive     | Boolean              | Boolean which indicates if the widget is in screenshot mode.                              |
 | dragHandler                | any                  | Drag handler event.                                                                       |
-| state                       | string | State of this widget. Possible values are: `ready`, `takingScreenshot`, `complete`, `disabled`                                               |
-| enableLegendOption | boolean              | Boolean to include legend option for user to include/exclude in screenshot.               |
-| enablePopupOption  | boolean              | Boolean to include pop-up option for user to include/exclude in screenshot.               |
-|  includeLegendInScreenshot    | boolean              | Boolean to include/exclude legend in screenshot.                                          |
-|  includePopupInScreenshot     | boolean              | Boolean to include/exclude pop-up in screenshot.                                          |
+| state                       | String | State of this widget. Possible values are: `ready`, `takingScreenshot`, `complete`, `disabled`                                               |
+| enableLegendOption | Boolean              | Boolean to include legend option for user to include/exclude in screenshot.               |
+| enablePopupOption  | Boolean              | Boolean to include pop-up option for user to include/exclude in screenshot.               |
+|  includeLegendInScreenshot    | Boolean              | Boolean to include/exclude legend in screenshot.                                          |
+|  includePopupInScreenshot     | Boolean              | Boolean to include/exclude pop-up in screenshot.                                          |
 | featureWidget `read-only`              | Feature              | Instance of the Feature widget.                                                           |
 | legendWidget `read-only`               | Legend               | Instance of the Legend widget.                                                            |
 
