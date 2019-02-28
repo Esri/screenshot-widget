@@ -16,42 +16,17 @@ More info on html2canvas can be found here: http://html2canvas.hertzen.com/
 
 | Name                            | Type                 | Summary                                                                     |
 | ------------------------------- | -------------------- | --------------------------------------------------------------------------- |
-| view \*\*                       | MapView \| SceneView | A reference to the `MapView` or `SceneView`                                 |
+| view \*                       | MapView \| SceneView | A reference to the `MapView` or `SceneView`                                 |
 | label                           | String               | The widget's default label.                                                 |
 | iconClass                       | String               | Expand widget icon class.                                                   |
-| legendIncludedInScreenshot \*\* | boolean              | Boolean to include option for user to include/exclude legend in screenshot. |
-| popupIncludedInScreenshot \*\*  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot. |
-| legendScreenshotEnabled \*\*    | boolean              | Boolean to include/exclude legend in screenshot.                            |
-| popupScreenshotEnabled \*\*     | boolean              | Boolean to include/exclude pop-up in screenshot.                            |
-| expandWidgetEnabled \*\*        | boolean              | Boolean to opt into expand widget.                                          |
-| expandWidget \*\*               | Expand               | Instance of the Expand widget.                                              |
-| screenshotPanel \*\*            | ScreenshotPanel      | View for screenshot widget panel.                                           |
+| includeLegendInScreenshot \* | boolean              | Boolean to include option for user to include/exclude legend in screenshot. |
+| includePopupInScreenshot \*  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot. |
+| enabledLegendOption \*    | boolean              | Boolean to include/exclude legend in screenshot.                            |
+| enablePopupOption \*     | boolean              | Boolean to include/exclude pop-up in screenshot.                            |
+| featureWidget \* `read-only`     | Feature              | Feature Widget containing pop-up node to include in screenshot.                            |
+| LegendWidget \* `read-only`      | Legend              | Legend Widget containing map legend node to include in screenshot.                            |
 
-\*\* = aliased
-
-## ScreenshotPanel
-
-### Constructor:
-
-#### new **ScreenshotPanel(_properties?_)**
-
-##### Property Overview:
-
-| Name                            | Type                 | Summary                                                                                   |
-| ------------------------------- | -------------------- | ----------------------------------------------------------------------------------------- |
-| view \*\*                       | MapView \| SceneView | A reference to the `MapView` or `SceneView`                                               |
-| viewModel                       | ScreenshotViewModel  | The view model for this widget.                                                           |
-| mapComponentSelectors \*\*      | String[] \*\*        | Array of strings consisting of HTML class name selectors. Length of array can be up to 2. |
-| legendIncludedInScreenshot \*\* | boolean              | Boolean to include option for user to include/exclude legend in screenshot.               |
-| popupIncludedInScreenshot \*\*  | boolean              | Boolean to include option for user to include/exclude pop-up in screenshot.               |
-| legendScreenshotEnabled \*\*    | boolean              | Boolean to include/exclude legend in screenshot.                                          |
-| popupScreenshotEnabled \*\*     | boolean              | Boolean to include/exclude pop-up in screenshot.                                          |
-| expandWidgetEnabled \*\*        | boolean              | Boolean to opt into expand widget.                                                        |
-| expandWidget \*\*               | Expand               | Instance of the Expand widget.                                                            |
-| featureWidget \*\*              | Feature              | Instance of the Feature widget.                                                           |
-| legendWidget \*\*               | Legend               | Instance of the Legend widget.                                                            |
-
-\*\* = aliased
+\* = aliased
 
 ## ScreenshotViewModel
 
