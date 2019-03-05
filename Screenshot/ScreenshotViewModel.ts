@@ -42,7 +42,7 @@ import {
 type State = "ready" | "takingScreenshot" | "complete" | "disabled";
 
 // interfaces
-import { Area, Screenshot } from "./interfaces/interfaces";
+import { Area, Screenshot, ScreenshotConfig } from "./interfaces/interfaces";
 
 @subclass("ScreenshotViewModel")
 class ScreenshotViewModel extends declared(Accessor) {
@@ -58,6 +58,7 @@ class ScreenshotViewModel extends declared(Accessor) {
   private _highlightedFeature: any = null;
   private _firstMapComponent: HTMLCanvasElement = null;
   private _secondMapComponent: HTMLCanvasElement = null;
+  private _screenshotConfig: ScreenshotConfig = null;
   private _mapComponentSelectors = [
     ".esri-screenshot__offscreen-legend-container",
     ".esri-screenshot__offscreen-pop-up-container"
@@ -166,8 +167,23 @@ class ScreenshotViewModel extends declared(Accessor) {
       const type = this.get("view.type");
       if (type === "2d") {
         const view = this.view as MapView;
+        const { width, height, x, y } = this._area;
+        if (width === 0 || height === 0) {
+          this._screenshotConfig = {
+            area: {
+              x,
+              y,
+              width: 1,
+              height: 1
+            }
+          };
+        } else {
+          this._screenshotConfig = {
+            area: this._area
+          };
+        }
         this._screenshotPromise = view
-          .takeScreenshot({ area: this._area })
+          .takeScreenshot(this._screenshotConfig)
           .catch((err: Error) => {
             console.error("ERROR: ", err);
           })
@@ -187,8 +203,23 @@ class ScreenshotViewModel extends declared(Accessor) {
           });
       } else if (type === "3d") {
         const view = this.view as SceneView;
+        const { width, height, x, y } = this._area;
+        if (width === 0 || height === 0) {
+          this._screenshotConfig = {
+            area: {
+              x,
+              y,
+              width: 1,
+              height: 1
+            }
+          };
+        } else {
+          this._screenshotConfig = {
+            area: this._area
+          };
+        }
         this._screenshotPromise = view
-          .takeScreenshot({ area: this._area })
+          .takeScreenshot(this._screenshotConfig)
           .catch((err: Error) => {
             console.error("ERROR: ", err);
           })
@@ -200,9 +231,9 @@ class ScreenshotViewModel extends declared(Accessor) {
               downloadBtnNode
             );
             this._screenshotPromise = null;
-            if (dragHandler) {
-              dragHandler.remove();
-              dragHandler = null;
+            if (this.dragHandler) {
+              this.dragHandler.remove();
+              this.dragHandler = null;
             }
             this.notifyChange("state");
           });
