@@ -1,4 +1,6 @@
-# screenshot-widget
+# DEPRECATED
+
+This repo is no longer maintained. All updates to screenshot widget will be updated here https://github.com/Esri/configurable-app-components/tree/master/Screenshot.
 
 Screenshot widget built with the ArcGIS API for Javascript version 4.x and html2canvas.
 
